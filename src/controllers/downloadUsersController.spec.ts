@@ -28,4 +28,11 @@ describe('DownloadUsersController', () => {
     const httpResponse = await sut.handle({})
     expect(httpResponse.statusCode).toBe(500)
   })
+
+  test('should return 200 on success', async() => {
+    const { sut, downloadUsersSpy } = makeSut()
+    const httpResponse = await sut.handle({})
+    expect(httpResponse.statusCode).toBe(200)
+    expect(httpResponse.body).toEqual(downloadUsersSpy.usersModel)
+  });
 })
