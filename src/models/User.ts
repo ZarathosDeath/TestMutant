@@ -1,7 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn} from "typeorm";
-import { PersonalData } from "./PersonalData";
-import { AddressData } from "./AddressData"
-import { ContactDetails } from "./ContactDetails";
+import { PersonalData, PersonalDataParams } from "./PersonalData";
+import { AddressData, AddressDataParams } from "./AddressData"
+import { ContactDetails, ContactDetailsParams } from "./ContactDetails";
 
 @Entity()
 export class User {
@@ -11,14 +11,17 @@ export class User {
 
     @OneToOne(type => PersonalData)
     @JoinColumn()
-    personalData: PersonalData;
+    personalData: PersonalDataParams;
 
     @OneToOne(type => AddressData)
     @JoinColumn()
-    addressData: AddressData;
+    addressData: AddressDataParams;
 
     @OneToOne(type => ContactDetails)
     @JoinColumn()
-    contactDetails: ContactDetails;
+    contactDetails: ContactDetailsParams;
 
 }
+
+export type UserParams = Omit<User, 'id'>
+

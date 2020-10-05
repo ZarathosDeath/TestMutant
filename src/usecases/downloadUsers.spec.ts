@@ -31,7 +31,20 @@ describe('DownloadUsers usecase', () => {
     const downloadUsers = new DbDownloadUsers()
 
     const res = await downloadUsers.download()
+    
     expect(axios.get).toHaveBeenCalled()
-    expect(res.data).toEqual(usersModelMock)
+    expect(res).toEqual(usersModelMock)
+  })
+
+  test('should throw if axios throws', async () => {
+    axios.get.mockResolvedValue({
+      data: usersModelMock
+    })
+
+    const downloadUsers = new DbDownloadUsers()
+
+    const res = await downloadUsers.download()
+    expect(axios.get).toHaveBeenCalled()
+    expect(res).toEqual(usersModelMock)
   })
 })

@@ -1,5 +1,4 @@
 import { DownloadUsers } from '../models/protocols'
-import { UsersRepository } from '../repositories/UsersRepository'
 import { User } from '../models/User'
 import Axios from 'axios'
 
@@ -8,7 +7,7 @@ export class DbDownloadUsers implements DownloadUsers {
 
   async download (): Promise<User[]> {
     const res = await Axios.get('https://jsonplaceholder.typicode.com/users')
-    const users: User[] = res.data
+    const users: User[] = res.data    
     return users
   }
 }

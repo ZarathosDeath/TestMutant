@@ -17,3 +17,5 @@ export class ContactDetails {
     website: string;
 
 }
+
+export type ContactDetailsParams = Omit<ContactDetails, 'id'>

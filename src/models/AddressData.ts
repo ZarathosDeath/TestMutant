@@ -26,3 +26,5 @@ export class AddressData {
     longitude: string;
 
 }
+
+export type AddressDataParams = Omit<AddressData, 'id'>

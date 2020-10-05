@@ -6,6 +6,8 @@
    "password": "33847055",
    "database": "teste",
    "synchronize": true,
+   "dropSchema": true,
+   "migrationsRun": true,
    "logging": false,
    "entities": [
       "src/models/**/*.ts"
