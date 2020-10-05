@@ -7,7 +7,8 @@ export class DbDownloadUsers implements DownloadUsers {
   constructor () {}
 
   async download (): Promise<User[]> {
-    const users: User[] = await Axios.get('https://jsonplaceholder.typicode.com/users')
+    const res = await Axios.get('https://jsonplaceholder.typicode.com/users')
+    const users: User[] = res.data
     return users
   }
 }

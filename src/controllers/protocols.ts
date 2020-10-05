@@ -10,5 +10,5 @@ export type HttpRequest = {
 }
 
 export interface Controller {
-  handle: (httpRequest: HttpResponse) => Promise<HttpResponse>
+  handle: (httpRequest: HttpRequest) => Promise<HttpResponse>
 }
