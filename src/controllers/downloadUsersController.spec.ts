@@ -3,17 +3,25 @@ import { DownloadUsersSpy } from './test/mockDownloadUsers'
 
 jest.mock('./test/mockDownloadUsers')
 
+const makeSut = () => {
+  const downloadUsersSpy = new DownloadUsersSpy()
+  const sut = new DownloadUsersController(downloadUsersSpy)
+
+  return {
+    sut,
+    downloadUsersSpy
+  }
+}
+
 describe('DownloadUsersController', () => {
   test('should call DownloadUsers', async () => {
-    const downloadUsersSpy = new DownloadUsersSpy()
-    const sut = new DownloadUsersController(downloadUsersSpy)
+    const { sut, downloadUsersSpy } = makeSut()
     await sut.handle({})
     expect(downloadUsersSpy.download).toHaveBeenCalled()
   });
 
   test('should return 500 if DownloadUsers throws', async () => {
-    const downloadUsersSpy = new DownloadUsersSpy()
-    const sut = new DownloadUsersController(downloadUsersSpy)
+    const { sut, downloadUsersSpy } = makeSut()
     jest.spyOn(downloadUsersSpy, 'download').mockImplementationOnce(() => {
       throw new Error()
     })
