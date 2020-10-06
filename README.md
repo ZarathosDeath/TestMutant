@@ -1,7 +1,9 @@
-# Awesome Project Build with TypeORM
+# Como rodar o projeto
 
-Steps to run this project:
+## Na raiz do projeto
+```Bash
+npm i
+npm start
+```
 
-1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm start` command
+## [Documentação](https://documenter.getpostman.com/view/4626228/TVRg9Ari)

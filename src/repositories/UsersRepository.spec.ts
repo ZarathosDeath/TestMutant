@@ -1,45 +1,31 @@
 import connection from '../helpers/typeormHelper'
 import { UsersRepository } from './UsersRepository'
-import { BaseEntity, Repository } from 'typeorm'
+import { Repository } from 'typeorm'
 import { User } from '@/models/User'
-import { UserParams } from '@/models/User'
-import { PersonalDataParams } from '@/models/PersonalData'
-import { CompanyParams } from '@/models/Company'
-import { AddressDataParams } from '@/models/AddressData'
-import { ContactDetailsParams } from '@/models/ContactDetails'
+import { RegularUserParams } from '@/models/RegularUser'
 let usersRepository: Repository<User>
 
-const company: CompanyParams = {
-  name: 'any_name',
-  catchPhrase: 'any_phrase',
-  bs: 'any_bs'
-}
-
-const personalData: PersonalDataParams = {
-  username: 'any_username',
-  name: 'any_name',
-  company
-}
-
-const addressData: AddressDataParams = {
-  street: 'any_street',
-  suite: 'any_suite',
-  city: 'any_city',
-  zipcode: 'any_zipcode',
-  latitude: 'any_lat',
-  longitude: 'any_long'
-}
-
-const contactDetails: ContactDetailsParams = {
-  email: 'any_mail',
-  phone: 'any_phone',
-  website: 'any_website'
-}
-
-const mockAddUserParams = (): UserParams => ({
-  personalData: personalData,
-  addressData: addressData,
-  contactDetails: contactDetails
+const mockAddUserParams = (): RegularUserParams => ({
+  name: "Leanne Graham",
+  username: "Bret",
+  email: "Sincere@april.biz",
+  address: {
+    street: "Kulas Light",
+    suite: "Apt. 556",
+    city: "Gwenborough",
+    zipcode: "92998-3874",
+    geo: {
+      lat: -37.3159,
+      lng: 81.1496
+    }
+  },
+  phone: "1-770-736-8031 x56442",
+  website: "hildegard.org",
+  company: {
+    name: "Romaguera-Crona",
+    catchPhrase: "Multi-layered client-server neural-net",
+    bs: "harness real-time e-markets"
+  }
 })
 
 describe('UsersRepository', () => {

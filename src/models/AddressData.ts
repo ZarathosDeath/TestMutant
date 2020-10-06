@@ -7,6 +7,9 @@ export class AddressData {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @OneToOne(type => User, user => user.contactDetails)
+    user_id: User;
+
     @Column()
     street: string;
 
@@ -18,12 +21,6 @@ export class AddressData {
 
     @Column()
     zipcode: string;
-
-    @Column({ type: 'point' })
-    latitude: string;
-
-    @Column({ type: 'point' })
-    longitude: string;
 
 }
 

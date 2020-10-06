@@ -7,6 +7,9 @@ export class ContactDetails {
     @PrimaryGeneratedColumn()
     id: number;
 
+    @OneToOne(type => User, user => user.contactDetails)
+    user_id: User;
+
     @Column()
     email: string;
 

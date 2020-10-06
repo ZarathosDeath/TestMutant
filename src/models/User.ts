@@ -9,17 +9,20 @@ export class User {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @OneToOne(type => PersonalData)
-    @JoinColumn()
-    personalData: PersonalDataParams;
+    @Column()
+    username: string;
 
-    @OneToOne(type => AddressData)
+    @OneToOne(type => PersonalData, personalData => personalData.user_id)
     @JoinColumn()
-    addressData: AddressDataParams;
+    personalData: PersonalData;
 
-    @OneToOne(type => ContactDetails)
+    @OneToOne(type => AddressData, addressData => addressData.user_id)
     @JoinColumn()
-    contactDetails: ContactDetailsParams;
+    addressData: AddressData;
+
+    @OneToOne(type => ContactDetails, contactDetails => contactDetails.user_id)
+    @JoinColumn()
+    contactDetails: ContactDetails;
 
 }
 

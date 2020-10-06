@@ -1,4 +1,6 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn} from "typeorm";
+import { User } from "./User";
+import { PersonalData } from "./PersonalData";
 @Entity()
 export class Company {
 

@@ -1,6 +1,6 @@
 import {Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinTable} from "typeorm";
 import {User} from './User'
-import { Company, CompanyParams } from "./Company";
+import { Company } from "./Company";
 
 
 @Entity()
@@ -8,16 +8,16 @@ export class PersonalData {
     
     @PrimaryGeneratedColumn()
     id: number;
-    
-    @Column()
-    username: string;
+
+    @OneToOne(type => User, user => user.personalData)
+    user_id: User;
     
     @Column()
     name: string;
     
     @OneToOne(type => Company)
     @JoinTable()
-    company: CompanyParams
+    company: Company
     
 }
 

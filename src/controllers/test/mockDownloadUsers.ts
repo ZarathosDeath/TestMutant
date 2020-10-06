@@ -1,6 +1,7 @@
 import { DownloadUsers } from "@/models/protocols"
 import { User } from "@/models/User"
 import * as faker from 'faker'
+import { RegularUser } from "@/models/RegularUser"
 
 export const mockUsersModel = () => {
   return {
@@ -13,9 +14,9 @@ export const mockUsersModel = () => {
 }
 
 export class DownloadUsersSpy implements DownloadUsers {
-  usersModel: User[]
+  usersModel: RegularUser[]
 
-  async download (): Promise<User[]> {
+  async download (): Promise<RegularUser[]> {
     return this.usersModel
   }
 }
